@@ -8,7 +8,7 @@ namespace SalesApplication
     /// Represents a combination of the region and customer number for a customer, 
     /// to enable customers to be sorted on these values.
     /// </summary>
-    public class CustomerKey 
+    public class CustomerKey : IComparable<CustomerKey>
     {
         // The region and customer number for a customer.
         private string _region;
@@ -26,7 +26,12 @@ namespace SalesApplication
         }
 
         // TODO [Ex1]: Implement the CompareTo method.
-
+        public int CompareTo(CustomerKey other)
+{
+            string _thisKey=_region+_customerNumber;
+            string otherKey =other._region+other._customerNumber;
+            return _thisKey.CompareTo(otherKey);
+}
     
     
     }

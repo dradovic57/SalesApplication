@@ -15,7 +15,8 @@ namespace SalesApplication
     {
         // The list of customers displayed by this form.
         // TODO [Ex1]: Modify the SortedList to use CustomerKey as the key type.
-        private SortedList<string, Customer> _customers = new SortedList<string, Customer>();
+        //private SortedList<string, Customer> _customers = new SortedList<string, Customer>();
+        private SortedList<CustomerKey, Customer> _customers = new SortedList<CustomerKey, Customer>();     //modified byDR
 
         /// <summary>
         /// Initializes the form object.
@@ -96,7 +97,9 @@ namespace SalesApplication
             if (customer != null)
             {
                 // TODO [Ex1]: Use a CustomerKey for the key.
-                _customers.Add(customer.Name, customer);
+                //_customers.Add(customer.Name, customer);
+               CustomerKey key=new CustomerKey(customer.Region,customer.CustomerNumber);            //modified byDR
+               _customers.Add(key, customer);
 
                 // TODO [Ex2]: Handle the HighPurchase event.
 

@@ -72,10 +72,10 @@ namespace SalesApplication
         {
             get { return _totalSpend; }
         }
-        //public override string ToString()                                                                   //byDR
-        //{
-        //    return string.Format("ToString overridden byDR: {0}, {1}, {2}", _name, _address, _region);
-        //}
+        public override string ToString()                                                                   //byDR
+        {
+            return string.Format("ToString overridden byDR: {0}, {1}, {2}", _name, _address, _region);
+        }
         public virtual void MakePurchase(decimal amount)                                                    //byDR
         {
             _totalSpend += amount;
