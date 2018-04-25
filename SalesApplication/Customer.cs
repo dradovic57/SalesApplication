@@ -5,6 +5,7 @@ using System.Text;
 namespace SalesApplication
 {
     // TODO [Ex2]: Define a CustomerPurchaseEventHandler delegate type.
+    public delegate void CustomerPurchaseEventHandler(object sender, CustomerPurchaseEventArgs ea);
 
 
     /// <summary>
@@ -24,7 +25,7 @@ namespace SalesApplication
         private static int _customerCount = 0;
 
         // TODO [Ex2]: Define a HighPurchase event.
-
+        public event CustomerPurchaseEventHandler HighPurchase;
 
         /// <summary>
         /// Initializes the Customer instance.
@@ -79,6 +80,10 @@ namespace SalesApplication
         public virtual void MakePurchase(decimal amount)                                                    //byDR
         {
             _totalSpend += amount;
+            if (amount >= 10000 && HighPurchase!=null)
+            {
+                HighPurchase(this, new CustomerPurchaseEventArgs(amount));
+            }
         }
         public abstract string Details                                                                      //byDR
         {

@@ -102,10 +102,20 @@ namespace SalesApplication
                _customers.Add(key, customer);
 
                 // TODO [Ex2]: Handle the HighPurchase event.
+                customer.HighPurchase += Customer_HighPurchase;
 
                 DisplayCustomersList();
                 customersListBox.SelectedItem = customer;
             }
+        }
+
+        private void Customer_HighPurchase(object sender, CustomerPurchaseEventArgs ea)
+        {
+            //throw new NotImplementedException();
+            Customer customer = (Customer)sender;
+            string text = string.Format("value of purchase: {0}", ea.ValueOfPurchase);
+            string caption = string.Format("high purchasse by customer: {0}", customer.Name);
+            MessageBox.Show(text, caption);
         }
 
         /// <summary>
